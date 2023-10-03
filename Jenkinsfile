@@ -41,7 +41,6 @@ pipeline {
 
         stage('Artifacts') {
           steps {
-            archiveArtifacts 'Write into file'
             writeFile(file: 'testFile.txt', text: 'Hello World!')
           }
         }

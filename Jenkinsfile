@@ -31,9 +31,21 @@ pipeline {
     }
 
     stage('Deploy') {
-      steps {
-        echo 'Deployed the changes'
-        input 'Do you want to deploy?'
+      parallel {
+        stage('Deploy') {
+          steps {
+            echo 'Deployed the changes'
+            input 'Do you want to deploy?'
+          }
+        }
+
+        stage('Artifacts') {
+          steps {
+            archiveArtifacts 'Write into file'
+            writeFile(file: 'testFile.txt', text: 'Hello World!')
+          }
+        }
+
       }
     }
 

@@ -32,6 +32,9 @@ pipeline {
 
     stage('Deploy') {
       parallel {
+        when {
+            branch 'master'
+        }
         stage('Deploy') {
           steps {
             echo 'Deployed the changes'

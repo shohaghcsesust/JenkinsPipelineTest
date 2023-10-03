@@ -31,9 +31,23 @@ pipeline {
     }
 
     stage('Deploy') {
-      steps {
-        echo 'Deployed the changes'
-        input 'Do you want to deploy?'
+      when {
+          branch 'master'
+      }
+      parallel {
+        stage('Deploy') {
+          steps {
+            echo 'Deployed the changes'
+            input 'Do you want to deploy?'
+          }
+        }
+
+        stage('Artifacts') {
+          steps {
+            writeFile(file: 'testFile.txt', text: 'Hello World!')
+          }
+        }
+
       }
     }
 

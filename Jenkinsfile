@@ -23,7 +23,7 @@ pipeline {
 
         stage('Test3') {
           steps {
-            echo 'This is test3 for environment variable : ${PresentationPath}'
+            echo "This is test3 for environment variable : ${PresentationPath}"
           }
         }
 

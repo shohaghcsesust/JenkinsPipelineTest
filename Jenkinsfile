@@ -21,6 +21,12 @@ pipeline {
           }
         }
 
+        stage('Test3') {
+          steps {
+            echo 'This is test3 for environment variable : ${PresentationPath}'
+          }
+        }
+
       }
     }
 
@@ -31,5 +37,8 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    PresentationPath = 'D:\\Personal\\certificate\\presentations'
   }
 }

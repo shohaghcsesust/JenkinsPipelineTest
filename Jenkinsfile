@@ -32,13 +32,13 @@ pipeline {
 
     stage('Deploy') {
       when {
-          branch 'master'
+        branch 'master'
       }
       parallel {
         stage('Deploy') {
           steps {
-            echo 'Deployed the changes'
             input 'Do you want to deploy?'
+            echo 'Deployed the changes'
           }
         }
 
